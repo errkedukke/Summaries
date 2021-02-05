@@ -13,25 +13,45 @@ namespace Summaries.Controllers
             _service = service;
         }
 
-        // GET
         [HttpGet]
         public IActionResult GetBooks()
         {
             return Ok(_service.GetAllBooks());
         }
 
-        // GET ONE
+        [HttpGet("{id:int}")]
+        public IActionResult GetBook(int id)
+        {
+            var book = _service.GetAllBooks().Find(x => x.Id == id);
+            
+            if(book == null)
+            {
+                return NotFound();
+            }
 
-        // POST
+            return Ok(book);
+        }
+
         //[HttpPost("AddBook")]
         [HttpPost]
         public IActionResult PostBook([FromBody] Book book)
         {
             _service.AddBook(book);
-            return Ok("Added");
+            return Ok();
         }
-        // PUT
+        
+        [HttpPut]
+        public IActionResult PutBook(int id, [FromBody] Book book)
+        {
+            _service.UpdateBook(id, book);
+            return Ok();
+        }
 
-        // DELETE
+        [HttpDelete]
+        public IActionResult DeleteBook(int id)
+        {
+            _service.DeleteBook(id);
+            return Ok();
+        }
     }
 }

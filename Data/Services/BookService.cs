@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Summaries.Data
 {
@@ -21,7 +22,8 @@ namespace Summaries.Data
 
         public Book GetBookByID(int id)
         {
-            throw new System.NotImplementedException();
+            var book = Data.Books.FirstOrDefault(b => b.Id == id );
+            return book;
         }
 
         public void UpdateBook(int id, Book book)
