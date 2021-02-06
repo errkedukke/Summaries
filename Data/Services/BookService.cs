@@ -12,7 +12,12 @@ namespace Summaries.Data
 
         public void DeleteBook(int id)
         {
-            throw new System.NotImplementedException();
+            var book = Data.Books.FirstOrDefault(b => b.Id == id);
+            
+            if(book != null)
+            {
+                Data.Books.Remove(book);
+            }
         }
 
         public List<Book> GetAllBooks()
@@ -28,7 +33,17 @@ namespace Summaries.Data
 
         public void UpdateBook(int id, Book book)
         {
-            throw new System.NotImplementedException();
+            var oldBook = Data.Books.FirstOrDefault(b => b.Id == id);
+
+            if(oldBook != null)
+            {
+                oldBook.Title = book.Title;
+                oldBook.Author = book.Author;
+                oldBook.Description = book.Description;
+                oldBook.DateStart = book.DateStart;
+                oldBook.DateRead = book.DateRead;
+                oldBook.Rate = book.Rate;
+            }
         }
     }
 }

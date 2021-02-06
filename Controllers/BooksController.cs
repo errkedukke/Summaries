@@ -32,7 +32,6 @@ namespace Summaries.Controllers
             return Ok(book);
         }
 
-        //[HttpPost("AddBook")]
         [HttpPost]
         public IActionResult PostBook([FromBody] Book book)
         {
@@ -40,14 +39,14 @@ namespace Summaries.Controllers
             return Ok();
         }
         
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public IActionResult PutBook(int id, [FromBody] Book book)
         {
             _service.UpdateBook(id, book);
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteBook(int id)
         {
             _service.DeleteBook(id);
