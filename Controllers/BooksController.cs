@@ -13,7 +13,7 @@ namespace Summaries.Controllers
             _service = service;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public IActionResult GetBooks()
         {
             return Ok(_service.GetAllBooks());
