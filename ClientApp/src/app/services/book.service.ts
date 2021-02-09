@@ -14,4 +14,9 @@ export class BookService {
   {
     return this.http.get<Book[]>(this._baseUrl);
   }
+
+  addBook(book: Book)
+  {
+    return this.http.post(this._baseUrl, book);
+  }
 }
