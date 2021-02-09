@@ -29,4 +29,9 @@ export class BookService {
   {
     return this.http.put(this._baseUrl + "/" + book.id, book);
   }
+
+  deleteBook(id: number)
+  {
+    return this.http.delete(this._baseUrl + "/" + id);
+  }
 }
